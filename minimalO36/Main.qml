@@ -176,13 +176,13 @@ Rectangle {  // backdrop
         }
     }
 
-        Text {  // debug
-            anchors.top: parent.top
-            anchors.left: parent.left
-            color: "#ffffff"
-            font.pixelSize: 14
-            text: "idx: " + currentSession + " count: " + sessionModel.rowCount()
-        }
+//        Text {  // debug
+//            anchors.top: parent.top
+//            anchors.left: parent.left
+//            color: "#ffffff"
+//            font.pixelSize: 14
+//            text: "idx: " + currentSession + " count: " + sessionModel.rowCount()
+//        }
 
     // session selector
     Row {
@@ -208,7 +208,7 @@ Rectangle {  // backdrop
                 anchors.fill: parent
                 onClicked: {
                     currentSession = (currentSession - 1 + sessionModel.rowCount()) % sessionModel.rowCount()
-                    inputField.border.color = "#ff0000"
+                    // inputField.border.color = "#ff0000"  // < for debugging
 
                     if (passwordInput.enabled) {
                         passwordInput.focus = true
@@ -222,7 +222,7 @@ Rectangle {  // backdrop
     
         Text {
             id: sessionLabel
-            text: sessionModel.data(sessionModel.index(currentSession, 0), 258) || "NO-SESSION"  // 258=full path, 260=name only
+            text: sessionModel.data(sessionModel.index(currentSession, 0), 260) || "NO-SESSION"  // 258=full path, 260=name only
             color: "#e2e0ef"
             font.pixelSize: 16
             font.family: "JetBrainsMono Nerd Font"
@@ -244,7 +244,7 @@ Rectangle {  // backdrop
                 anchors.fill: parent
                 onClicked: {
                     currentSession = (currentSession + 1) % sessionModel.rowCount()
-                    inputField.border.color = "#00ff00"
+                    // inputField.border.color = "#00ff00"  // < for debugging
 
                     if (passwordInput.enabled) {
                         passwordInput.focus = true
