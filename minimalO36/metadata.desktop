@@ -1,0 +1,5 @@
+[SddmGreeterTheme]
+Name=minimalO36
+Description=Minimal dark theme
+Type=sddm-theme
+QtVersion=6

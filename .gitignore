@@ -1,0 +1,5 @@
+*
+*.bak
+!.gitignore
+!minimalO36/
+!minimalO36/**
