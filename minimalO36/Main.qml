@@ -8,6 +8,7 @@ Rectangle {  // backdrop
     color: "#1e1b2e"
     property int currentSession: sessionModel.lastIndex
     Image {
+        anchors.fill: parent
         source: "backdrop.png"
         fillMode: Image.PreserveAspectCrop
     }
@@ -83,7 +84,6 @@ Rectangle {  // backdrop
                     }
                 }
             }
-
 
             TextInput {
                 id: passwordInput
@@ -180,14 +180,6 @@ Rectangle {  // backdrop
         }
     }
 
-//        Text {  // debug
-//            anchors.top: parent.top
-//            anchors.left: parent.left
-//            color: "#ffffff"
-//            font.pixelSize: 14
-//            text: "idx: " + currentSession + " count: " + sessionModel.rowCount()
-//        }
-
     // session selector
     Row {
         id: sessionSelector
@@ -212,7 +204,6 @@ Rectangle {  // backdrop
                 anchors.fill: parent
                 onClicked: {
                     currentSession = (currentSession - 1 + sessionModel.rowCount()) % sessionModel.rowCount()
-                    // inputField.border.color = "#ff0000"  // < for debugging
 
                     if (passwordInput.enabled) {
                         passwordInput.focus = true
@@ -248,7 +239,6 @@ Rectangle {  // backdrop
                 anchors.fill: parent
                 onClicked: {
                     currentSession = (currentSession + 1) % sessionModel.rowCount()
-                    // inputField.border.color = "#00ff00"  // < for debugging
 
                     if (passwordInput.enabled) {
                         passwordInput.focus = true
