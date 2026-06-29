@@ -13,7 +13,7 @@ Rectangle {  // backdrop
         function onLoginFailed() {
             waitAnimation.stop()
             passwordInput.text = ""
-            passwordInput.forceActiveFocus()
+            passwordInput.focus = true
             failAnimation.start()
         }
     }
@@ -71,6 +71,7 @@ Rectangle {  // backdrop
                 horizontalAlignment: TextInput.AlignHCenter
                 focus: true
                 opacity: 1.0
+                enabled: true
 
                 Keys.onReturnPressed: {
                     if (usernameInput.text.length > 0) {
@@ -94,7 +95,7 @@ Rectangle {  // backdrop
                 enabled: false
 
                 onEnabledChanged: {
-                    if (enabled) forceActiveFocus()
+                    if (enabled) focus = true
                 }
 
                 Keys.onReturnPressed: {
@@ -123,7 +124,7 @@ Rectangle {  // backdrop
             script: {
                 usernameInput.enabled = false
                 passwordInput.enabled = true
-                passwordInput.forceActiveFocus()
+                passwordInput.focus = true
             }
         }
         NumberAnimation {
@@ -147,7 +148,7 @@ Rectangle {  // backdrop
             script: {
                 passwordInput.enabled = false
                 usernameInput.enabled = true
-                usernameInput.forceActiveFocus()
+                usernameInput.focus = true
             }
         }
         NumberAnimation {
@@ -198,13 +199,23 @@ Rectangle {  // backdrop
             font.pixelSize: 16
             font.family: "JetBrainsMono Nerd Font"
             anchors.verticalCenter: parent.verticalCenter
+            leftPadding: 10
+            rightPadding: 10
+            topPadding: 10
+            bottomPadding: 10
     
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
                     currentSession = (currentSession - 1 + sessionModel.rowCount()) % sessionModel.rowCount()
-                    usernameInput.forceActiveFocus()
                     inputField.border.color = "#ff0000"
+
+                    if (passwordInput.enabled) {
+                        passwordInput.focus = true
+                    }
+                    if (usernameInput.enabled) {
+                        usernameInput.focus = true
+                    }
                 }
             }
         }
@@ -224,13 +235,23 @@ Rectangle {  // backdrop
             font.pixelSize: 16
             font.family: "JetBrainsMono Nerd Font"
             anchors.verticalCenter: parent.verticalCenter
+            leftPadding: 10
+            rightPadding: 10
+            topPadding: 10
+            bottomPadding: 10
     
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
                     currentSession = (currentSession + 1) % sessionModel.rowCount()
-                    usernameInput.forceActiveFocus()
                     inputField.border.color = "#00ff00"
+
+                    if (passwordInput.enabled) {
+                        passwordInput.focus = true
+                    }
+                    if (usernameInput.enabled) {
+                        usernameInput.focus = true
+                    }
                 }
             }
         }
