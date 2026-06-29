@@ -3,10 +3,14 @@ import SddmComponents 2.0
 
 Rectangle {  // backdrop
     id: root
-    width: 1920
-    height: 1080
+    width: Screen.width
+    height: Screen.height
     color: "#1e1b2e"
     property int currentSession: sessionModel.lastIndex
+    Image {
+        source: "backdrop.png"
+        fillMode: Image.PreserveAspectCrop
+    }
 
     Connections {
         target: sddm
