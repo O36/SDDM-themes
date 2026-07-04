@@ -17,9 +17,8 @@ Rectangle {  // backdrop
         target: sddm
         function onLoginFailed() {
             waitAnimation.stop()
-            passwordInput.text = ""
-            passwordInput.focus = true
             failAnimation.start()
+            passwordInput.focus = true
         }
     }
 
@@ -49,19 +48,49 @@ Rectangle {  // backdrop
             SequentialAnimation {
                 id: failAnimation
                 ColorAnimation {
-                    target: inputField
-                    property: "border.color"
+                    target: passwordInput
+                    property: "color"
                     to: "#ff0000"
-                    duration: 50
+                    duration: 100
                 }
     
-                PauseAnimation { duration: 300 }
+                ColorAnimation {
+                    target: passwordInput
+                    property: "color"
+                    to: "#e2e0ef"
+                    duration: 100
+                }
+
+                ColorAnimation {
+                    target: passwordInput
+                    property: "color"
+                    to: "#ff0000"
+                    duration: 100
+                }
     
                 ColorAnimation {
-                    target: inputField
-                    property: "border.color"
-                    to: "#2d2b42"
+                    target: passwordInput
+                    property: "color"
+                    to: "#e2e0ef"
                     duration: 100
+                }
+
+                ColorAnimation {
+                    target: passwordInput
+                    property: "color"
+                    to: "#ff0000"
+                    duration: 100
+                }
+    
+                ColorAnimation {
+                    target: passwordInput
+                    property: "color"
+                    to: "#e2e0ef"
+                    duration: 100
+                }
+
+                onStopped: {
+                    passwordInput.text = ""
                 }
             }
 
@@ -72,7 +101,7 @@ Rectangle {  // backdrop
                 width: parent.width -40
                 color: "#e2e0ef"
                 font.pixelSize: 28
-                font.letterSpacing: 8
+                font.letterSpacing: 5
                 horizontalAlignment: TextInput.AlignHCenter
                 focus: true
                 opacity: 1.0
@@ -167,14 +196,14 @@ Rectangle {  // backdrop
         id: waitAnimation
         loops: Animation.Infinite
         ColorAnimation {
-            target: inputField
-            property: "border.color"
+            target: passwordInput
+            property: "color"
             to: "#7dcfff"
             duration: 300
         }
         ColorAnimation {
-            target: inputField
-            property: "border.color"
+            target: passwordInput
+            property: "color"
             to: "#2d2b42"
             duration: 500
         }
